@@ -125,7 +125,7 @@
     loginBtn.addEventListener("click", async () => {
       try {
         await signInWithPopup(auth, provider);
-        window.location.href = "dashboard.html";
+        window.location.href = "setup.html";
       } catch (error) {
         alert(error.message);
       }
