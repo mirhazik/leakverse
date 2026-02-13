@@ -4,41 +4,84 @@
   <title>LeakVerse</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f5f8fa;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      background: linear-gradient(-45deg, #f5f8fa, #e3f2fd, #f0f9ff, #ffffff);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .container {
-      background: white;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      width: 380px;
+      padding: 50px 40px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
       text-align: center;
-      width: 350px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .logo {
-      color: #1DA1F2;
-      font-size: 32px;
-      margin-bottom: 10px;
+      font-size: 38px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #1DA1F2, #0d8ddb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 15px;
+    }
+
+    .tagline {
+      color: #555;
+      margin-bottom: 35px;
+      font-size: 15px;
     }
 
     .login-btn {
-      background-color: #1DA1F2;
+      background: linear-gradient(90deg, #1DA1F2, #0d8ddb);
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 25px;
+      padding: 14px;
+      border-radius: 30px;
       font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
       width: 100%;
+      transition: 0.3s ease;
+      box-shadow: 0 8px 20px rgba(29,161,242,0.3);
+    }
+
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(29,161,242,0.4);
+    }
+
+    .login-btn:active {
+      transform: scale(0.98);
     }
   </style>
 </head>
@@ -47,12 +90,13 @@
 
   <div class="container">
     <h1 class="logo">LeakVerse</h1>
+    <p class="tagline">Next-Gen Gaming Updates & Leaks</p>
+
     <button id="googleLogin" class="login-btn">
       Continue with Google
     </button>
   </div>
 
-  <!-- Firebase FULL Auth Setup -->
   <script type="module">
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
